@@ -1,0 +1,45 @@
+<h2>
+  US Autocomplete Pro
+</h2>
+<form class="us-autocomplete-form">
+    <mat-form-field appearance="fill" [style.width.%]="50">
+      <input
+        type="text"
+        name="address"
+        placeholder="Enter an address"
+        matInput
+        [matAutocomplete]="autoUs"
+        [(ngModel)]="address"
+        (ngModelChange)="onUsChange($event)"
+      />
+    </mat-form-field>
+  
+    <mat-autocomplete #autoUs="matAutocomplete">
+        <mat-option *ngFor="let address of addressOptions" [value]="address">
+            {{ address.streetLine }} {{ address.secondary }} {{ address.city }} {{ address.state }} {{ address.zipcode }}
+        </mat-option>
+    </mat-autocomplete>
+</form>
+
+<h2>
+  International Autocomplete
+</h2>
+<form class="intl-autocomplete-form">
+  <mat-form-field appearance="fill" [style.width.%]="50">
+    <input
+      type="text"
+      name="address"
+      placeholder="Enter an address"
+      matInput
+      [matAutocomplete]="autoIntl"
+      [(ngModel)]="address"
+      (ngModelChange)="onIntlChange($event)"
+    />
+  </mat-form-field>
+
+  <mat-autocomplete #autoIntl="matAutocomplete">
+      <mat-option *ngFor="let address of addressOptions" [value]="address">
+          {{ address.address_text }}
+      </mat-option>
+  </mat-autocomplete>
+</form>
